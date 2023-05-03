@@ -9,6 +9,7 @@ Created on Wed May  3 17:42:15 2023
 import time 
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
+import subprocess
 
 class WatchdogSSH(FileSystemEventHandler):
     def on_created(self, event):
@@ -19,6 +20,7 @@ class WatchdogSSH(FileSystemEventHandler):
     def on_modified(self, event):
         print(f"Evento {event.event_type} detectado en {event.src_path}")
         if '../pruebaTxt/datos.txt' == event.src_path:
+            subprocess.call(["./buscarLogs.sh"])
             print(f"Archivo {event.src_path} modificado")
             
 if __name__ == "__main__":
