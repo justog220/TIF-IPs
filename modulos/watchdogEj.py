@@ -34,7 +34,6 @@ class WatchdogSSH(FileSystemEventHandler):
                 if not ip in self._ipsAnalizadas:
                     self._ipsAnalizadas.append(ip)
                     
-                    
                     abuseIPDB = AbuseIPDB()
                     info = abuseIPDB.getInfo(ip)
                     
@@ -79,6 +78,12 @@ class WatchdogSSH(FileSystemEventHandler):
             })
         
         df.to_csv("dataFrame.csv")
+        
+        html = df.to_html(classes='table table-stripped')
+        
+        with open("data/index.html", "w") as pagHtml:
+            pagHtml.write(html)
+            
                 
                 
             
