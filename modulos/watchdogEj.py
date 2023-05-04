@@ -32,6 +32,9 @@ class WatchdogSSH(FileSystemEventHandler):
                 split = data.split()
                 mes, dia, hora, ip = split[0], split[1], split[2], split[3]
                 if not ip in self._ipsAnalizadas:
+                    self._ipsAnalizadas.append(ip)
+                    
+                    
                     abuseIPDB = AbuseIPDB()
                     info = abuseIPDB.getInfo(ip)
                     
@@ -42,6 +45,7 @@ class WatchdogSSH(FileSystemEventHandler):
                     print(info)
                     self._diccionariosInfos.append(info)
                     self.actualizarDB()
+                    
                     
     def actualizarDB(self):
         ips = []
