@@ -13,7 +13,7 @@ import subprocess
 from abuseIPDB import AbuseIPDB
 import pandas as pd
 
-class WatchdogSSH(FileSystemEventHandler):
+class WatchdogSSH(FileSystemEventHandler, rutaTabla="../web/tabla.html"):
     def __init__(self, rutaTabla):
         self._ipsAnalizadas = []
         self._diccionariosInfos = []
@@ -95,7 +95,6 @@ if __name__ == "__main__":
     event_handler = WatchdogSSH()
     
     observer = Observer()
-    #observer.schedule(event_handler, path='rand.txt', recursive=False)
     observer.schedule(event_handler, path='/var/log/auth.log', recursive=False)
     
     observer.start()
