@@ -105,6 +105,6 @@ class AbuseIPDB:
 if __name__ == '__main__':
     apiAbuse = AbuseIPDB()
     
-    info = apiAbuse.getInfo('143.202.18.77')
+    info = apiAbuse.getInfo('192.168.0.13')
     
     print(info)
