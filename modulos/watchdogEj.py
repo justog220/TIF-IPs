@@ -12,23 +12,26 @@ from watchdog.events import FileSystemEventHandler
 import subprocess
 
 class WatchdogSSH(FileSystemEventHandler):
+    def __init__(self):
+        ipsAnalizadas = []
+        
     def on_created(self, event):
-        print(f"Evento {event.event_type} detectado en {event.src_path}")
-        if '../pruebaTxt/datos.txt' == event.src_path:
-            print(f"Archivo {event.src_path} modificado")
-            
+        subprocess.call(["./buscarLogs.sh"])
+        
     def on_modified(self, event):
-        print(f"Evento {event.event_type} detectado en {event.src_path}")
-        if '../pruebaTxt/datos.txt' == event.src_path:
-            subprocess.call(["./buscarLogs.sh"])
-            print(f"Archivo {event.src_path} modificado")
+        subprocess.call(["./buscarLogs.sh"])
+        self.checkearReputacion()
+        
+    def checkearReputacion(self):
+        with open("data/hora_ip.txt", "r") as registro:
+            print(registro.read())
             
 if __name__ == "__main__":
     event_handler = WatchdogSSH()
     
     observer = Observer()
-    
-    observer.schedule(event_handler, path='../pruebaTxt/datos.txt', recursive=False)
+    observer.schedule(event_handler, path='rand.txt', recursive=False)
+    #observer.schedule(event_handler, path='/var/log/auth.log', recursive=False)
     
     observer.start()
     
