@@ -14,7 +14,7 @@ from abuseIPDB import AbuseIPDB
 import pandas as pd
 
 class WatchdogSSH(FileSystemEventHandler):
-    def __init__(self, rutaTabla):
+    def __init__(self):
         self._ipsAnalizadas = []
         self._diccionariosInfos = []
         
