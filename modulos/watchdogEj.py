@@ -30,10 +30,15 @@ class WatchdogSSH(FileSystemEventHandler):
             info = registro.readlines()
             for data in info:
                 split = data.split()
-                mes, dia, ip = split[0], split[1], split[2]
+                mes, dia, hora, ip = split[0], split[1], split[2], split[3]
                 if not ip in self._ipsAnalizadas:
                     abuseIPDB = AbuseIPDB()
                     info = abuseIPDB.getInfo(ip)
+                    
+                    info["mes"] = mes
+                    info["dia"] = dia
+                    info["hora"] = hora
+                    
                     print(info)
                     self._diccionariosInfos.append(info)
                     self.actualizarDB()
@@ -45,8 +50,11 @@ class WatchdogSSH(FileSystemEventHandler):
         scoreAbuso = []
         pais = []
         codigoPais = []
+        meses = []
+        dias = []
+        horas = []
         
-        columnas = [ips, esPublica, estaEnWhitelist, scoreAbuso, pais, codigoPais]
+        columnas = [ips, esPublica, estaEnWhitelist, scoreAbuso, pais, codigoPais, meses, dias, horas]
         for dic in self._diccionariosInfos:
             keys = dic.keys()
             
@@ -60,7 +68,10 @@ class WatchdogSSH(FileSystemEventHandler):
             'Esta en whitelist' : estaEnWhitelist,
             'Score de abuso' : scoreAbuso,
             'Pais' : pais,
-            'Codigo pais' : codigoPais
+            'Codigo pais' : codigoPais,
+            'Mes' : meses,
+            'Dia' : dias,
+            'Hora' : horas
             })
         
         df.to_csv("dataFrame.csv")
