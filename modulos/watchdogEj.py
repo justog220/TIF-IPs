@@ -13,11 +13,10 @@ import subprocess
 from abuseIPDB import AbuseIPDB
 import pandas as pd
 
-class WatchdogSSH(FileSystemEventHandler, rutaTabla="../web/tabla.html"):
+class WatchdogSSH(FileSystemEventHandler):
     def __init__(self, rutaTabla):
         self._ipsAnalizadas = []
         self._diccionariosInfos = []
-        self._rutaTabla = rutaTabla
         
     def on_created(self, event):
         subprocess.call(["./buscarLogs.sh"])
@@ -82,7 +81,7 @@ class WatchdogSSH(FileSystemEventHandler, rutaTabla="../web/tabla.html"):
         
         html = df.to_html(classes='table table-stripped')
         
-        with open(self._rutaTabla, "w") as pagHtml:
+        with open("../web/tabla.html", "w") as pagHtml:
             pagHtml.write(html)
             
             
