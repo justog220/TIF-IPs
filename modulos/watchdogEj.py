@@ -14,9 +14,10 @@ from abuseIPDB import AbuseIPDB
 import pandas as pd
 
 class WatchdogSSH(FileSystemEventHandler):
-    def __init__(self):
+    def __init__(self, rutaTabla):
         self._ipsAnalizadas = []
         self._diccionariosInfos = []
+        self._rutaTabla = rutaTabla
         
     def on_created(self, event):
         subprocess.call(["./buscarLogs.sh"])
@@ -81,8 +82,11 @@ class WatchdogSSH(FileSystemEventHandler):
         
         html = df.to_html(classes='table table-stripped')
         
-        with open("data/index.html", "w") as pagHtml:
+        with open(self._rutaTabla, "w") as pagHtml:
             pagHtml.write(html)
+            
+            
+    
             
                 
                 
