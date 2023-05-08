@@ -7,7 +7,7 @@ pip install -r requirements.txt
 
 Inicializar watchdog:
 
-¸¸¸
+```
 ./run.sh
-¸¸¸
+```
 
