@@ -12,6 +12,7 @@ from watchdog.events import FileSystemEventHandler
 import subprocess
 from abuseIPDB import AbuseIPDB
 import pandas as pd
+import os
 
 class WatchdogSSH(FileSystemEventHandler):
     def __init__(self):
@@ -80,6 +81,10 @@ class WatchdogSSH(FileSystemEventHandler):
         df.to_csv("dataFrame.csv")
         
         html = df.to_html(classes='table table-stripped')
+        
+        md = df.to_markdown()
+        os.system("clear")
+        print(md)
         
         with open("../web/tabla.html", "w") as pagHtml:
             pagHtml.write(html)
