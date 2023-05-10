@@ -1,8 +1,7 @@
 carpeta=$(basename $(pwd))
 if [[ $carpeta == "TIF-IPs"]]
 then
-    cd app
-    cd modulos
+    cd app/modulos
 fi
 
 python3 watchdogEj.py
