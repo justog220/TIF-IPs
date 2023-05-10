@@ -1,5 +1,5 @@
 carpeta=$(basename $(pwd))
-if [[ $carpeta == "TIF-IPs"]]
+if [[ $carpeta == "TIF-IPs" ]]
 then
     cd app/modulos
 fi
