@@ -16,17 +16,64 @@ import os
 
 class WatchdogSSH(FileSystemEventHandler):
     def __init__(self):
+        """
+        Constructor de la clase responsable de monitorear el archivo
+        donde se registran las conexiones por protocolo SSH y ante un cambio
+        llevar a cabo cierto proceso.
+
+        Returns
+        -------
+        None.
+
+        """
         self._ipsAnalizadas = []
         self._diccionariosInfos = []
         
     def on_created(self, event):
+        """
+        Establece que es lo que se realiza si se crea el archivo de
+        registros
+
+        Parameters
+        ----------
+        event : Watchdog event
+            evento ante la creación del archivo.
+
+        Returns
+        -------
+        None.
+
+        """
         subprocess.call(["./buscarLogs.sh"])
         
     def on_modified(self, event):
+        """
+        Establece que es lo que se realiza si se modifica el archivo de
+        registros
+
+        Parameters
+        ----------
+        event : Watchdog event
+            evento ante la creación del archivo.
+
+        Returns
+        -------
+        None.
+
+        """
         subprocess.call(["./buscarLogs.sh"])
         self.checkearReputacion()
         
     def checkearReputacion(self):
+        """
+        Método que permite hacer una consulta a la API para
+        conocer informacion de una ip.
+
+        Returns
+        -------
+        None.
+
+        """
         with open("data/hora_ip.txt", "r") as registro:
             info = registro.readlines()
             for data in info:
@@ -48,6 +95,15 @@ class WatchdogSSH(FileSystemEventHandler):
                     
                     
     def actualizarDB(self):
+        """
+        Permite llevar a cabo un registro de la información de las 
+        distintas IP de las cuales se han ido pidiendo información.
+
+        Returns
+        -------
+        None.
+
+        """
         ips = []
         esPublica = []
         estaEnWhitelist = []

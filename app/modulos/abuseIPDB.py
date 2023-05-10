@@ -35,8 +35,8 @@ class AbuseIPDB:
 
         Parameters
         ----------
-        ip : TYPE
-            DESCRIPTION.
+        ip : str
+            Ip cuya información desea consultarse con la API.
 
         Returns
         -------
