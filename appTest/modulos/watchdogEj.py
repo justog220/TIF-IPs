@@ -13,6 +13,7 @@ import subprocess
 from abuseIPDB import AbuseIPDB
 import pandas as pd
 import os
+from random import randint, choice
 
 class WatchdogSSH(FileSystemEventHandler):
     def __init__(self):
@@ -143,8 +144,6 @@ class WatchdogSSH(FileSystemEventHandler):
             'Hora' : horas
             })
         
-        df.to_csv("dataFrame.csv")
-        
         html = df.to_html(classes='table table-stripped')
         
         md = df.to_markdown()
@@ -159,20 +158,40 @@ class WatchdogSSH(FileSystemEventHandler):
             pagHtml.write(estilo + html)
     
             
+def generarRegistros(n):
+    
+    registrosFalsos= open("registrosFalsos.log", "w")
+    registrosFalsos.close()
+    
+    registrosFalsos = open("registrosFalsos.log", "a")
+    meses = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
+    for i in range(n):
+        mes = choice(meses)
+        dia = randint(1, 31)
+        hora = f"{randint(0, 23)}:{randint(0, 60)}:{randint(0, 60)}"
+        ip = f"{randint(0, 255)}.{randint(0, 255)}.{randint(0, 255)}.{randint(0, 255)}"
+
+        registrosFalsos.write(f"{mes}  {dia} {hora} homelab sshd[9774]: Accepted password for justo from {ip} port 26611 ssh2" + "\n")
+
+    registrosFalsos.close()
+        
+
                 
                 
             
 if __name__ == "__main__":
     event_handler = WatchdogSSH()
     
+    generarRegistros(5)
     observer = Observer()
-    observer.schedule(event_handler, path='/var/log/auth.log', recursive=False)
+    observer.schedule(event_handler, path='registrosFalsos.log', recursive=False)
     
     observer.start()
     
     try:
         while True:
-            time.sleep(1)
+            time.sleep(10)
+            generarRegistros(1)
     except KeyboardInterrupt:
         observer.stop()
         
