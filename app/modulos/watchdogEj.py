@@ -152,19 +152,11 @@ class WatchdogSSH(FileSystemEventHandler):
         print(self._url)
         print(md)
         
-        with open("../web/tabla.html", "r") as pagHtml:
-            indexHtml = pagHtml.read()
+        with open("../web/index.html", "w") as estilos:
+            estilo = estilos.read()
 
-        marcador_inicio = '<!-- INICIO_TABLA -->'
-        marcador_fin = '<!-- FIN_TABLA -->'
-
-        posicion_inicio = indexHtml.find(marcador_inicio)
-        posicion_fin = indexHtml.find(marcador_fin)  + len(marcador_fin)
-
-        indexModif = indexHtml[:posicion_inicio] +  html + indexHtml[posicion_fin:]
-            
-        with open("../web/index.html", "w") as pagHtml:
-            pagHtml.write(indexModif)
+        with open("../web/tabla.html", "w") as pagHtml:
+            pagHtml.write(estilo + html)
     
             
                 
