@@ -155,7 +155,7 @@ class WatchdogSSH(FileSystemEventHandler):
         with open("../web/estilo.html", "r") as estilos:
             estilo = estilos.read()
 
-        with open("../web/tabla.html") as pagHtml:
+        with open("../web/tabla.html", "w") as pagHtml:
             pagHtml.write("")
             pagHtml.write(estilo + html)
     
