@@ -2,12 +2,12 @@
 Instalar requerimientos:
 
 ```
-pip install -r requirements.txt
+sudo pip install -r requirements.txt
 ```
 
 Inicializar watchdog:
 
 ```
-./run.sh
+sudo ./run.sh
 ```
 

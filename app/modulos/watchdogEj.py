@@ -28,6 +28,15 @@ class WatchdogSSH(FileSystemEventHandler):
         """
         self._ipsAnalizadas = []
         self._diccionariosInfos = []
+        self._url = self.setUrl()
+
+    def setUrl(self):
+        ruta_html = '../web/index.html'
+
+        # Obtener la ruta absoluta del archivo HTML
+        ruta_absoluta = os.path.abspath(ruta_html)
+
+        return ('file:///' + ruta_absoluta)
         
     def on_created(self, event):
         """
@@ -140,6 +149,7 @@ class WatchdogSSH(FileSystemEventHandler):
         
         md = df.to_markdown()
         os.system("clear")
+        print(self._url)
         print(md)
         
         with open("../web/tabla.html", "w") as pagHtml:
