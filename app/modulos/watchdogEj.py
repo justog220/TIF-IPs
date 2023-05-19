@@ -163,7 +163,7 @@ class WatchdogSSH(FileSystemEventHandler):
 
         indexModif = indexHtml[:posicion_inicio] +  html + indexHtml[posicion_fin:]
             
-        with open("../web/tabla.html", "w") as pagHtml:
+        with open("../web/index.html", "w") as pagHtml:
             pagHtml.write(indexModif)
     
             
