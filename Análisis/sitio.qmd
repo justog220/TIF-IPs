@@ -1,0 +1,179 @@
+---
+title: Análisis IPs
+author: Garcia Justo
+format:
+  html:
+    code-fold: false
+    toc: true
+  pdf: default
+jupyter: python3
+number-sections: true
+---
+
+## Análisis de IPs reportadas como atacantes por SSH
+### Extracción de IPs
+Para la realización de este análisis la cátedra proporcionó una lista de IPs que fueron reportadas por conexiones SSH y ataques DDoS
+
+```{python}
+#| tags: []
+import subprocess
+```
+
+```{python}
+#| tags: []
+patron = "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}"
+!grep -Eo "$patron" data/SSH.txt > data/IPsSSH.txt
+```
+
+```{python}
+#| tags: []
+with open("data/IPsSSH.txt") as ips:
+    ipSSH = ips.read()
+    
+ipSSH = ipSSH.replace("\n", " ").split()
+ipSSH
+```
+
+### Importamos la implementación de las peticiones a la API
+
+```{python}
+#| code-fold: true
+#| tags: []
+!mkdir modulos
+!cp ../app/modulos/abuseIPDB.py modulos/abuseIPDB.py
+```
+
+```{python}
+#| tags: []
+#Importo los modulos necesarios
+from modulos.abuseIPDB import AbuseIPDB
+import pandas as pd
+```
+
+```{python}
+#| tags: []
+#Construyo el objeto
+apiAbuse = AbuseIPDB()
+```
+
+```{python}
+#| tags: []
+#Declaro las keys de la info que devuelve mi implementación de requests
+keys = ['esPublica', 'estaEnWhitelist', 'scoreAbuso', 'pais', 'codigoPais']
+
+diccDf = {'ip' : []}
+
+for ip in ipSSH:
+    diccDf['ip'].append(ip)
+    info = apiAbuse.getInfo(ip)
+    for key in keys:
+        if key in diccDf:
+            diccDf[key].append(info[key])
+        else:
+            diccDf[key] = [info[key]]
+    
+```
+
+```{python}
+#| tags: []
+df = pd.DataFrame(data=diccDf)
+df
+```
+
+```{python}
+#| tags: []
+import pycountry
+```
+
+```{python}
+#| tags: []
+df['pais'] = df['codigoPais'].apply(lambda codigo: pycountry.countries.get(alpha_2=codigo).name)
+dfgdp = df.copy()
+dfgdp['codigoPais'] = df['pais'].apply(lambda nombre: pycountry.countries.search_fuzzy(nombre)[0].alpha_3)
+```
+
+```{python}
+#| tags: []
+dfgdp
+```
+
+```{python}
+#| tags: []
+print(dfgdp["codigoPais"].loc[~dfgdp["codigoPais"].isin(mapa["iso_a3"])])
+```
+
+```{python}
+#| tags: []
+import geopandas as gpd
+import matplotlib.pyplot as plt
+
+mapa = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
+```
+
+::: {.callout-note header=false}
+Todas estas librerias utilizan convenciones, por lo cual es importante checkear que esten presentes todos los paises que queremos plotear
+:::
+
+```{python}
+#| code-fold: true
+#| tags: []
+import numpy as np
+```
+
+```{python}
+#| tags: []
+print(np.unique(dfgdp["codigoPais"].loc[~dfgdp["codigoPais"].isin(mapa["iso_a3"])]))
+```
+
+
+
+
+
+Pude notar que tanto Hong Kong, como Singapur no estan representadas en el mapa mundi por ser ciudades. Por ello, debo cargarlas desde otro dataset
+
+
+
+```{python}
+#| label: fig-mapa
+#| fig-cap: Mapa con los lugares del que proceden las IPs
+#| tags: []
+paisesMarcados = mapa[mapa['iso_a3'].isin(dfgdp["codigoPais"])]
+
+fig, ax = plt.subplots(figsize=(15, 10))
+
+mapa.plot(ax=ax, edgecolor='grey', color='lightgrey')
+paisesMarcados.plot(ax=ax, edgecolor='black', color='red')
+
+ciudades = gpd.read_file(gpd.datasets.get_path('naturalearth_cities'))
+
+singapur = ciudades[ciudades['name'] == 'Singapore']
+hongkong = ciudades[ciudades['name'] == 'Hong Kong']
+
+singapur.plot(ax=ax, edgecolor='black', color='blue')
+hongkong.plot(ax=ax, edgecolor='black', color='blue')
+
+plt.show()
+```
+
+```{python}
+#| tags: []
+import seaborn as sns
+```
+
+```{python}
+#| tags: []
+sns.set(style='darkgrid')
+sns.countplot(data=dfgdp, y="codigoPais")
+ylabel = plt.ylabel("Pais", rotation='horizontal')
+plt.xlabel("Reportes")
+plt.show()
+```
+
+```{python}
+#| tags: []
+recuento = df["pais"].value_counts().to_dict()
+
+pd.DataFrame(data={"Pais": list(recuento.keys()), "Reportes": list(recuento.values())})
+```
+
+
