@@ -1,0 +1,13 @@
+,ip,esPublica,estaEnWhitelist,scoreAbuso,pais,codigoPais,isp
+0,54.144.244.57,True,False,58,NaN,US,Amazon Data Services NoVa
+1,188.166.216.223,True,False,100,NaN,SG,DigitalOcean LLC
+2,220.94.228.162,True,False,100,NaN,KR,KT Corporation
+3,218.92.0.99,True,False,100,NaN,CN,ChinaNet Jiangsu Province Network
+4,116.193.159.2,True,False,100,NaN,HK,Pacswitch Globe Telecom Limited
+5,109.117.92.13,True,False,100,NaN,IT,Vodafone Italia S.p.A.
+6,167.99.112.43,True,False,100,NaN,US,DigitalOcean LLC
+7,89.248.163.219,True,False,100,NaN,NL,FiberXpress BV
+8,143.198.204.177,True,False,100,NaN,SG,DigitalOcean LLC
+9,61.177.173.45,True,False,100,NaN,CN,ChinaNet Jiangsu Province Network
+10,8.222.204.225,True,False,100,NaN,SG,Alibaba.com Singapore E-Commerce Private Limited
+11,220.135.119.188,True,False,100,NaN,TW,Chunghwa Telecom Co. Ltd.
