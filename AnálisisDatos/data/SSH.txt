@@ -1,0 +1,37 @@
+SSH BLACKLIST
+Flags: X - disabled, D - dynamic 
+ 0 D list=ssh_blacklist address=54.144.244.57 
+     creation-time=may/23/2023 01:55:10 timeout=1w2d15h59m58s 
+
+ 1 D list=ssh_blacklist address=188.166.216.223 
+     creation-time=may/23/2023 02:05:53 timeout=1w2d16h10m40s 
+
+ 2 D list=ssh_blacklist address=220.94.228.162 
+     creation-time=may/23/2023 03:36:25 timeout=1w2d17h41m13s 
+
+ 3 D list=ssh_blacklist address=218.92.0.99 creation-time=may/23/2023 04:12:35 
+     timeout=1w2d18h17m22s 
+
+ 4 D list=ssh_blacklist address=116.193.159.2 
+     creation-time=may/23/2023 04:20:54 timeout=1w2d18h25m41s 
+
+ 5 D list=ssh_blacklist address=109.117.92.13 
+     creation-time=may/23/2023 04:38:43 timeout=1w2d18h43m31s 
+
+ 6 D list=ssh_blacklist address=167.99.112.43 
+     creation-time=may/23/2023 04:42:51 timeout=1w2d18h47m39s 
+
+ 7 D list=ssh_blacklist address=89.248.163.219 
+     creation-time=may/23/2023 05:34:31 timeout=1w2d19h39m20s 
+
+ 8 D list=ssh_blacklist address=143.198.204.177 
+     creation-time=may/23/2023 06:51:28 timeout=1w2d20h56m16s 
+
+ 9 D list=ssh_blacklist address=61.177.173.45 
+     creation-time=may/23/2023 09:07:17 timeout=1w2d23h12m5s 
+
+10 D list=ssh_blacklist address=8.222.204.225 
+     creation-time=may/23/2023 09:49:45 timeout=1w2d23h54m32s 
+
+11 D list=ssh_blacklist address=220.135.119.188 
+     creation-time=may/23/2023 09:54:14 timeout=1w2d23h59m2s
