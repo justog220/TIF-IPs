@@ -1,13 +1,13 @@
-,Unnamed: 0.2,Unnamed: 0.1,Unnamed: 0,ip,esPublica,estaEnWhitelist,scoreAbuso,pais,codigoPais,isp,tipoDeUso,ultimoReporte
-0,0,0,0,54.144.244.57,True,False,58,,US,Amazon Data Services NoVa,Data Center/Web Hosting/Transit,2023-05-24T06:13:13+00:00
-1,1,1,1,188.166.216.223,True,False,100,,SG,DigitalOcean LLC,Data Center/Web Hosting/Transit,2023-05-24T22:06:28+00:00
-2,2,2,2,220.94.228.162,True,False,100,,KR,KT Corporation,,2023-05-25T07:31:37+00:00
-3,3,3,3,218.92.0.99,True,False,100,,CN,ChinaNet Jiangsu Province Network,Data Center/Web Hosting/Transit,2023-05-25T13:37:54+00:00
-4,4,4,4,116.193.159.2,True,False,100,,HK,Pacswitch Globe Telecom Limited,Data Center/Web Hosting/Transit,2023-05-25T13:27:42+00:00
-5,5,5,5,109.117.92.13,True,False,100,,IT,Vodafone Italia S.p.A.,,2023-05-25T12:52:03+00:00
-6,6,6,6,167.99.112.43,True,False,100,,US,DigitalOcean LLC,Data Center/Web Hosting/Transit,2023-05-25T06:00:10+00:00
-7,7,7,7,89.248.163.219,True,False,100,,NL,FiberXpress BV,Fixed Line ISP,2023-05-25T12:40:37+00:00
-8,8,8,8,143.198.204.177,True,False,100,,SG,DigitalOcean LLC,Data Center/Web Hosting/Transit,2023-05-24T16:11:13+00:00
-9,9,9,9,61.177.173.45,True,False,100,,CN,ChinaNet Jiangsu Province Network,Data Center/Web Hosting/Transit,2023-05-25T13:35:00+00:00
-10,10,10,10,8.222.204.225,True,False,100,,SG,Alibaba.com Singapore E-Commerce Private Limited,Data Center/Web Hosting/Transit,2023-05-25T12:50:13+00:00
-11,11,11,11,220.135.119.188,True,False,100,,TW,Chunghwa Telecom Co. Ltd.,,2023-05-25T09:30:47+00:00
+ip,esPublica,estaEnWhitelist,scoreAbuso,pais,codigoPais,isp,tipoDeUso,ultimoReporte
+54.144.244.57,True,False,58,NaN,US,Amazon Data Services NoVa,Data Center/Web Hosting/Transit,2023-05-24T06:13:13+00:00
+188.166.216.223,True,False,100,NaN,SG,DigitalOcean LLC,Data Center/Web Hosting/Transit,2023-05-25T17:08:47+00:00
+220.94.228.162,True,False,100,NaN,KR,KT Corporation,,2023-05-25T22:00:07+00:00
+218.92.0.99,True,False,100,NaN,CN,ChinaNet Jiangsu Province Network,Data Center/Web Hosting/Transit,2023-05-25T23:18:56+00:00
+116.193.159.2,True,False,100,NaN,HK,Pacswitch Globe Telecom Limited,Data Center/Web Hosting/Transit,2023-05-25T22:00:08+00:00
+109.117.92.13,True,False,100,NaN,IT,Vodafone Italia S.p.A.,,2023-05-25T22:04:00+00:00
+167.99.112.43,True,False,100,NaN,US,DigitalOcean LLC,Data Center/Web Hosting/Transit,2023-05-25T22:00:10+00:00
+89.248.163.219,True,False,100,NaN,NL,FiberXpress BV,Fixed Line ISP,2023-05-25T23:41:25+00:00
+143.198.204.177,True,False,100,NaN,SG,DigitalOcean LLC,Data Center/Web Hosting/Transit,2023-05-25T22:14:42+00:00
+61.177.173.45,True,False,100,NaN,CN,ChinaNet Jiangsu Province Network,Data Center/Web Hosting/Transit,2023-05-25T22:05:26+00:00
+8.222.204.225,True,False,100,NaN,SG,Alibaba.com Singapore E-Commerce Private Limited,Data Center/Web Hosting/Transit,2023-05-25T22:44:47+00:00
+220.135.119.188,True,False,100,NaN,TW,Chunghwa Telecom Co. Ltd.,,2023-05-25T23:37:31+00:00
