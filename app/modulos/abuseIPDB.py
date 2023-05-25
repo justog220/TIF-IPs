@@ -92,8 +92,8 @@ class AbuseIPDB:
             'ip' : data['ipAddress']
             }
         
-        keys = ['esPublica', 'estaEnWhitelist', 'scoreAbuso', 'pais', 'codigoPais']
-        keysOr = ['isPublic', 'isWhitelisted', 'abuseConfidenceScore', 'countryName', 'countryCode']
+        keys = ['esPublica', 'estaEnWhitelist', 'scoreAbuso', 'pais', 'codigoPais', 'isp', 'tipoDeUso', 'ultimoReporte']
+        keysOr = ['isPublic', 'isWhitelisted', 'abuseConfidenceScore', 'countryName', 'countryCode', 'isp', 'usageType', 'lastReportedAt']
         for key, keyOr in zip(keys, keysOr):
             if keyOr in data:
                 diccInfo[key] = data[keyOr]
