@@ -123,8 +123,11 @@ class WatchdogSSH(FileSystemEventHandler):
         isps = []
         usos = []
         reportes = []
+        meses = []
+        dias = []
+        horas = []
         
-        columnas = [ips, esPublica, estaEnWhitelist, scoreAbuso, pais, codigoPais, isps, usos, reportes]
+        columnas = [ips, esPublica, estaEnWhitelist, scoreAbuso, pais, codigoPais, isps, usos, reportes, meses, dias, horas]
         for dic in self._diccionariosInfos:
             keys = dic.keys()
             
@@ -141,7 +144,10 @@ class WatchdogSSH(FileSystemEventHandler):
             'Codigo país' : codigoPais,
             'ISP' : isps,
             'Uso' : usos,
-            'Último reporte' : reportes
+            'Último reporte' : reportes,
+            'Mes' : meses,
+            'Día' : dias,
+            'Hora' : horas
             })
         
         html = df.to_html(classes='table table-stripped')
