@@ -119,11 +119,11 @@ class WatchdogSSH(FileSystemEventHandler):
         scoreAbuso = []
         pais = []
         codigoPais = []
-        meses = []
-        dias = []
-        horas = []
+        isps = []
+        usos = []
+        reportes = []
         
-        columnas = [ips, esPublica, estaEnWhitelist, scoreAbuso, pais, codigoPais, meses, dias, horas]
+        columnas = [ips, esPublica, estaEnWhitelist, scoreAbuso, pais, codigoPais, isps, usos, reportes]
         for dic in self._diccionariosInfos:
             keys = dic.keys()
             
@@ -138,9 +138,9 @@ class WatchdogSSH(FileSystemEventHandler):
             'Score de abuso' : scoreAbuso,
             'Pais' : pais,
             'Codigo pais' : codigoPais,
-            'Mes' : meses,
-            'Dia' : dias,
-            'Hora' : horas
+            'ISP' : isps,
+            'Uso' : usos,
+            'Último reporte' : reportes
             })
         
         df.to_csv("dataFrame.csv")
