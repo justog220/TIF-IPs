@@ -134,11 +134,11 @@ class WatchdogSSH(FileSystemEventHandler):
         
         df = pd.DataFrame(data={
             'IP' : ips,
-            'Es publica' : esPublica,
-            'Esta en whitelist' : estaEnWhitelist,
+            'Es pública' : esPublica,
+            'Está en whitelist' : estaEnWhitelist,
             'Score de abuso' : scoreAbuso,
-            'Pais' : pais,
-            'Codigo pais' : codigoPais,
+            'País' : pais,
+            'Codigo país' : codigoPais,
             'ISP' : isps,
             'Uso' : usos,
             'Último reporte' : reportes
