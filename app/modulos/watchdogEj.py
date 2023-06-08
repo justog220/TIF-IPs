@@ -117,13 +117,12 @@ class WatchdogSSH(FileSystemEventHandler):
         esPublica = []
         estaEnWhitelist = []
         scoreAbuso = []
-        pais = []
         codigoPais = []
         isps = []
         usos = []
         reportes = []
         
-        columnas = [ips, esPublica, estaEnWhitelist, scoreAbuso, pais, codigoPais, isps, usos, reportes]
+        columnas = [ips, esPublica, estaEnWhitelist, scoreAbuso, codigoPais, isps, usos, reportes]
         for dic in self._diccionariosInfos:
             keys = dic.keys()
             
@@ -136,7 +135,6 @@ class WatchdogSSH(FileSystemEventHandler):
             'Es pública' : esPublica,
             'Está en whitelist' : estaEnWhitelist,
             'Score de abuso' : scoreAbuso,
-            'País' : pais,
             'Codigo país' : codigoPais,
             'ISP' : isps,
             'Uso' : usos,
